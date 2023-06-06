@@ -1,25 +1,31 @@
-import img1 from "./components/images/1.png";
-import img2 from "./components/images/2.png";
-import img3 from "./components/images/3.png";
+import slide1 from "./components/images/slide1.png";
+import slide2 from "./components/images/slide2.png";
+import slide3 from "./components/images/slide3.png";
+
+import product1 from "./components/images/product1.png";
+import product2 from "./components/images/product2.png";
+import product3 from "./components/images/product3.png";
+import product4 from "./components/images/product4.png";
+import product7 from "./components/images/product7.png";
 
 export const sliderItems = [
     {
         id: 1,
-        img: img1,
+        img: slide1,
         title: "SUMMER SALE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
         bg: "f5fafd",
     },
     {
         id: 2,
-        img: img2,
+        img: slide2,
         title: "AUTUMN COLLECTION",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
         bg: "fcf1ed",
     },
     {
         id: 3,
-        img: img3,
+        img: slide3,
         title: "LOUNGEWEAR LOVE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
         bg: "fbf0f4",
@@ -46,3 +52,38 @@ export const categories = [
         cat:"jeans"
     },
 ];
+
+export const popularProducts = [
+    {
+        id: 1,
+        img: "https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
+    },
+    {
+        id: 2,
+        img: product2,
+    },
+    {
+        id: 3,
+        img: product3,
+    },
+    {
+        id: 4,
+        img: product4,
+    },
+    {
+        id: 5,
+        img: "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
+    },
+    {
+        id: 6,
+        img: "https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
+    },
+    {
+        id: 7,
+        img: product7,
+    },
+    {
+        id: 8,
+        img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
+    },
+]
