@@ -6,6 +6,7 @@ import {
 import styled from "styled-components";
 
 const Info = styled.div`
+    opacity: 0;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -16,6 +17,8 @@ const Info = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.5s ease;
+    cursor: pointer;
 `;
 
 const Container = styled.div`
@@ -28,6 +31,10 @@ const Container = styled.div`
     justify-content: center;
     background-color: #f5fbfd;
     position: relative;
+
+    &:hover ${Info}{
+        opacity: 1;
+    }
 `;
 
 const Circle = styled.div`
