@@ -2,12 +2,6 @@ import slide1 from "./components/images/slide1.png";
 import slide2 from "./components/images/slide2.png";
 import slide3 from "./components/images/slide3.png";
 
-import product1 from "./components/images/product1.png";
-import product2 from "./components/images/product2.png";
-import product3 from "./components/images/product3.png";
-import product4 from "./components/images/product4.png";
-import product7 from "./components/images/product7.png";
-
 export const sliderItems = [
     {
         id: 1,
@@ -52,38 +46,3 @@ export const categories = [
         cat: "jeans"
     },
 ];
-
-export const popularProducts = [
-    {
-        id: 1,
-        img: product1,
-    },
-    {
-        id: 2,
-        img: product2,
-    },
-    {
-        id: 3,
-        img: product3,
-    },
-    {
-        id: 4,
-        img: product4,
-    },
-    {
-        id: 5,
-        img: "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
-    },
-    {
-        id: 6,
-        img: "https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
-    },
-    {
-        id: 7,
-        img: product7,
-    },
-    {
-        id: 8,
-        img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
-    },
-]
