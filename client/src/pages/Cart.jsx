@@ -2,11 +2,9 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
-import product1 from "../components/images/product1.png";
-import product2 from "../components/images/product2.png";
 import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
+import { useSelector } from "react-redux";
 
 const Container = styled.div``;
 
@@ -154,8 +152,8 @@ const Button = styled.button`
     font-weight: 600;
 `;
 
-
 const Cart = () => {
+    const cart = useSelector(state => state.cart);
     return (
         <Container>
             <Navbar/>
@@ -172,63 +170,39 @@ const Cart = () => {
                     </TopTexts>
                     <TopButton type="filled">CHECKOUT NOW</TopButton>
                 </Top>
+
                 <Bottom>
-
                     <Info>
-                        <Product>
+                        {cart.products.map(product => (
+                            <Product key={product._id}>
+                                <ProductDetail>
+                                    <Image src={product.img}/>
+                                    <Details>
+                                        <ProductName><b>Product:</b> {product.title}</ProductName>
+                                        <ProductId><b>ID:</b> {product._id}</ProductId>
+                                        <ProductColor color={product.color}/>
+                                        <ProductSize><b>Size:</b> {product.size}</ProductSize>
+                                    </Details>
+                                </ProductDetail>
 
-                            <ProductDetail>
-                                <Image src={product1}/>
-                                <Details>
-                                    <ProductName><b>Product:</b> JESSIE THUNDER SHOES</ProductName>
-                                    <ProductId><b>ID:</b> 1412366423</ProductId>
-                                    <ProductColor color="black"/>
-                                    <ProductSize><b>Size:</b> 37.5</ProductSize>
-                                </Details>
-                            </ProductDetail>
-
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Add/>
-                                    <ProductAmount>2</ProductAmount>
-                                    <Remove/>
-                                </ProductAmountContainer>
-                                <ProductPrice>$ 30</ProductPrice>
-                            </PriceDetail>
-
-                        </Product>
-
-                        <Hr/>
-
-                        <Product>
-
-                            <ProductDetail>
-                                <Image src={product2}/>
-                                <Details>
-                                    <ProductName><b>Product:</b> HUKURA T-SHIRT</ProductName>
-                                    <ProductId><b>ID:</b> 1412366423</ProductId>
-                                    <ProductColor color="gray"/>
-                                    <ProductSize><b>Size:</b> M</ProductSize>
-                                </Details>
-                            </ProductDetail>
-
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Add/>
-                                    <ProductAmount>2</ProductAmount>
-                                    <Remove/>
-                                </ProductAmountContainer>
-                                <ProductPrice>$ 20</ProductPrice>
-                            </PriceDetail>
-
-                        </Product>
+                                <PriceDetail>
+                                    <ProductAmountContainer>
+                                        <Add/>
+                                        <ProductAmount>{product.quantity}</ProductAmount>
+                                        <Remove/>
+                                    </ProductAmountContainer>
+                                    <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
+                                </PriceDetail>
+                            </Product>
+                        ))}
+                        <Hr/> 
                     </Info>
-                    
+
                     <Summary>
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice>$ 80</SummaryItemPrice>
+                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -240,7 +214,7 @@ const Cart = () => {
                         </SummaryItem>
                         <SummaryItem type="total">
                             <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrice>$ 80</SummaryItemPrice>
+                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
 
                         <Button>CHECKOUT NOW</Button>
