@@ -23,7 +23,6 @@ const Success = () => {
                 address: data.billing_details.address,
             });
             setOrderId(res.data._id);
-            console.log(res.data);
           } catch {}
         };
         data && createOrder();
