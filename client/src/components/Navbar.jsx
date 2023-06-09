@@ -68,6 +68,11 @@ const MenuItem = styled.div`
     ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
+const NavbarLink = styled(Link)`
+    color: black;
+    text-decoration: none;
+`;
+
 const Navbar = () => {
     const quantity = useSelector(state => state.cart.quantity);
     return (
@@ -81,7 +86,11 @@ const Navbar = () => {
                     </SearchContainer>
                 </Left>
 
-                <Center><Logo>LAMA.</Logo></Center>
+                <Center>
+                    <NavbarLink to={'/'} >
+                        <Logo>LAMA.</Logo>
+                    </NavbarLink>
+                </Center>
                 
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
