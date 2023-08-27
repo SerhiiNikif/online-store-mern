@@ -12,7 +12,7 @@ cd online-store-mern
 ```
 
 ## 3. Setting environment file .env.
-Create an `.env` files in the api and admin folders and fill it with the values ​​from the `.env.example` file.
+Create an `.env` files in the api and client folders and fill it with the values ​​from the `.env.example` file.
 
 __api/.env__
 ```
