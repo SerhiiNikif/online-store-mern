@@ -1,0 +1,13 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install --prefix api --force && npm install --prefix admin --force && npm install --prefix client --force",
+    "start-all": "concurrently \"npm start --prefix api\" \"PORT=3001 npm start --prefix admin\" \"PORT=3000 npm start --prefix client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
