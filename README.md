@@ -14,16 +14,6 @@ cd online-store-mern
 ## 3. Setting environment file .env.
 Create an `.env` files in the api and admin folders and fill it with the values ​​from the `.env.example` file.
 
-__admin/.env__
-```
-REACT_APP_API_KEY=your_api_key
-REACT_APP_AUTH_DOMAIN=your_auth_domain
-REACT_APP_PROJECT_ID=your_project_id
-REACT_APP_STORAGE_BUCKET=your_storage_bucket
-REACT_APP_MESSAGING_SENDER_ID=your_messaging_sender_id
-REACT_APP_APP_ID=your_app_id
-```
-
 __api/.env__
 ```
 PORT=5000
