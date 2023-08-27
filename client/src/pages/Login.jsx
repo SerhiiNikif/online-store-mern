@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { login } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
+import { resetLoginError } from "../redux/userRedux";
 
 const Container = styled.div`
     width: 100vw;
@@ -73,6 +74,12 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const { isFetching, error } = useSelector(state => state.user);
+
+    useEffect(() => {
+        dispatch(resetLoginError());
+    }, [dispatch]);
+
+    console.log(error);
 
     const handleClick = e => {
         e.preventDefault();

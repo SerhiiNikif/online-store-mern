@@ -18,32 +18,39 @@ const App = () => {
     return (
         <Router>
             <Switch>
-                {user ? <>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
-                    <Route path="/products/:category">
-                        <ProductList />
-                    </Route>
-                    <Route path="/product/:id">
-                        <Product />
-                    </Route>
-                    <Route path="/cart">
-                        <Cart />
-                    </Route>
-                    <Route path="/success">
-                        <Success />
-                    </Route>
-                    <Route path="/login">
-                        {user ? <Redirect to="/"/> : <Login />}
-                    </Route>
-                    <Route path="/register">
-                        {user ? <Redirect to="/"/> : <Register />}
-                    </Route>
-                </> : <Login />}
+                {user ? (
+                    <>
+                        <Route exact path="/">
+                            <Home />
+                        </Route>
+                        <Route path="/products/:category">
+                            <ProductList />
+                        </Route>
+                        <Route path="/product/:id">
+                            <Product />
+                        </Route>
+                        <Route path="/cart">
+                            <Cart />
+                        </Route>
+                        <Route path="/success">
+                            <Success />
+                        </Route>
+                        <Redirect from="/login" to="/" />
+                        <Redirect from="/register" to="/" />
+                    </>
+                ) : (
+                    <>
+                        <Route path="/login">
+                            <Login />
+                        </Route>
+                        <Route path="/register">
+                            <Register />
+                        </Route>
+                        <Redirect to="/login" />
+                    </>
+                )}
             </Switch>
         </Router>
-    )
-};
+)}
 
 export default App;

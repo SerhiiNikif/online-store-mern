@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
+const ApiError = require('../exceptions/api-error.js');
 
 // REGISTER
 router.post("/register", async (req, res) => {
@@ -20,16 +21,20 @@ router.post("/register", async (req, res) => {
 });
 
 //LOGIN
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res, next) => {
     try {
         const user = await User.findOne({username: req.body.username});
 
-        !user && res.status(401).json("Wrong credentials!")
+        if (!user) {
+            throw ApiError.BadRequest('Wrong credentials!');
+        }
 
         const hashPassword = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
         const OriginalPassword = hashPassword.toString(CryptoJS.enc.Utf8);
 
-        OriginalPassword !== req.body.password && res.status(401).json("Wrong credentials!");
+        if (OriginalPassword !== req.body.password) {
+            throw ApiError.BadRequest('Wrong credentials!');
+        }
 
         const accessToken = jwt.sign(
             {
@@ -46,8 +51,12 @@ router.post("/login", async (req, res) => {
 
 
     } catch (err) {
-        res.status(500).json(err)
+        next(err);
     }
+});
+
+router.post("/logout", (req, res) => {
+    res.status(200).json("Logged out successfully.");
 });
 
 module.exports = router;

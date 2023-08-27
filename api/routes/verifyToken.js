@@ -1,17 +1,20 @@
 const jwt = require("jsonwebtoken");
+const ApiError = require('../exceptions/api-error.js');
 
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers.token;
-
+    
     if (authHeader) {
         const token = authHeader.split(" ")[1];
         jwt.verify(token, process.env.JWT_SEC, (err, user) => {
-            if (err) res.status(403).json("Token is not valid!");
+            if (err) {
+                throw ApiError.BadRequest('Token is not valid!');
+            }
             req.user = user;
             next();
         })
     } else {
-        return res.status(401).json("You are not authentiated!");
+        return next(ApiError.UnauthorizedError());
     }
 };
 
@@ -20,7 +23,7 @@ const verifyTokenAndAuthorization = (req, res, next) => {
         if (req.user.id === req.params.id || req.user.isAdmin) {
             next();
         } else {
-            res.status(403).json("You are not alowed to do that!");
+            throw ApiError.Forbidden();
         }
     })
 };
@@ -30,7 +33,7 @@ const verifyTokenAndAdmin = (req, res, next) => {
         if (req.user.isAdmin) {
             next();
         } else {
-            res.status(403).json("You are not alowed to do that!");
+            throw ApiError.Forbidden();
         }
     });
 };
